@@ -9,7 +9,7 @@ public class MySpringApp {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		// get bean
-		Coach theCoach = context.getBean("myCoach", Coach.class);
+		Coach theCoach = context.getBean("myTennisCoach", Coach.class);
 		
 		System.out.println(theCoach.getDailyFortune());
 		

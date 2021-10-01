@@ -1,6 +1,16 @@
 package com.ray.springdemo;
 
 public class TennisCoach implements Coach {
+	
+	private FortuneService fortuneService;
+	
+	public TennisCoach() {
+	}
+	
+	public void setFortuneService(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+
 
 	@Override
 	public String getDailyWorkout() {
@@ -9,8 +19,7 @@ public class TennisCoach implements Coach {
 
 	@Override
 	public String getDailyFortune() {
-		// TODO Auto-generated method stub
-		return null;
+		return fortuneService.getFortune();
 	}
 
 }

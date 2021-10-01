@@ -6,7 +6,8 @@ public class MyApp {
 		
 		HappyForturnService myFortuneService = new HappyForturnService();
 		
-		Coach theCoach = new BaseballCoach(myFortuneService);
+		TennisCoach theCoach = new TennisCoach();
+		theCoach.setFortuneService(myFortuneService); 
 		
 		System.out.println(theCoach.getDailyFortune());
 
