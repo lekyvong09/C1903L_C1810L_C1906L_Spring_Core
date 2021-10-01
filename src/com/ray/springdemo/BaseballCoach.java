@@ -18,5 +18,12 @@ public class BaseballCoach implements Coach {
 		return fortuneService.getFortune();
 	}
 	
+	public void doWhenStartingUp() {
+		System.out.println("BaseballCoach: preparing to startup");
+	}
+	
+	public void doWhenDestroy() {
+		System.out.println("BaseballCoach: destroying my things");
+	}
 
 }
