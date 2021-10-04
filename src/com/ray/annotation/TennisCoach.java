@@ -1,12 +1,14 @@
 package com.ray.annotation;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+//@Scope("prototype")
 public class TennisCoach implements Coach{
 
 //	@Autowired
@@ -15,6 +17,7 @@ public class TennisCoach implements Coach{
 	
 	@Autowired
 	public TennisCoach(@Qualifier("badFortuneService")FortuneService fortuneService) {
+		System.out.println("Inside constructor");
 		this.fortuneService = fortuneService;
 	}
 	
@@ -39,5 +42,15 @@ public class TennisCoach implements Coach{
 		return fortuneService.getFortune();
 	}
 	
-
+	
+	@PostConstruct
+	public void doWhenStartingUp() {
+		System.out.println("BaseballCoach: preparing to startup");
+	}
+	
+	
+	@PreDestroy
+	public void doWhenDestroy() {
+		System.out.println("BaseballCoach: destroying my things");
+	}
 }
