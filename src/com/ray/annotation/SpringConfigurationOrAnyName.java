@@ -1,10 +1,19 @@
 package com.ray.annotation;
 
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.ray.annotation")
+//@ComponentScan("com.ray.annotation")
 public class SpringConfigurationOrAnyName {
 
+	@Bean
+	public FortuneService badFortuneService() {
+		return new BadFortuneService();
+	}
+	
+	@Bean
+	public Coach swimCoach() {
+		return new SwimCoach(badFortuneService());
+	}
 }

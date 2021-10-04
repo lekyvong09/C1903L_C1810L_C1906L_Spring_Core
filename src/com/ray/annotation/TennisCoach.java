@@ -16,7 +16,7 @@ public class TennisCoach implements Coach{
 	private FortuneService fortuneService;
 	
 	@Autowired
-	public TennisCoach(@Qualifier("badFortuneService")FortuneService fortuneService) {
+	public TennisCoach(@Qualifier("happyForturnService")FortuneService fortuneService) {
 		System.out.println("Inside constructor");
 		this.fortuneService = fortuneService;
 	}
