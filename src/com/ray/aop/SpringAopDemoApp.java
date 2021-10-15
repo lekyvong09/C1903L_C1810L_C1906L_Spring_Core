@@ -3,6 +3,7 @@ package com.ray.aop;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.ray.aop.dao.AccountDAO;
+import com.ray.aop.dao.MembershipDAO;
 
 public class SpringAopDemoApp {
 
@@ -12,8 +13,13 @@ public class SpringAopDemoApp {
 				new AnnotationConfigApplicationContext(SpringConfig.class);
 		
 		AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
+		MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
+		
 
 		theAccountDAO.addAccount();
+		
+		theMembershipDAO.addAccount();
+		
 		
 		context.close();
 	}
