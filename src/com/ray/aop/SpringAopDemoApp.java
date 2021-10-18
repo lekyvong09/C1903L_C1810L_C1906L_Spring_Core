@@ -18,6 +18,8 @@ public class SpringAopDemoApp {
 
 		theAccountDAO.addAccount(new Account(), true);
 		
+		theAccountDAO.doAnything();
+		
 		theMembershipDAO.addMembership();
 		
 		

@@ -10,4 +10,9 @@ public class AccountDAO {
 		// doing some logic tasks...............
 		System.out.println(getClass() + ": Doing some DB work - adding account");
 	}
+	
+	public boolean doAnything() {
+		System.out.println(getClass() + ": Doing anything");
+		return true;
+	}
 }
