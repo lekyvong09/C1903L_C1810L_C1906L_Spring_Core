@@ -6,7 +6,7 @@ import com.ray.aop.Account;
 
 @Component
 public class AccountDAO {
-	public void addAccount(Account theAccount) {
+	public void addAccount(Account theAccount, boolean isVIP) {
 		// doing some logic tasks...............
 		System.out.println(getClass() + ": Doing some DB work - adding account");
 	}
