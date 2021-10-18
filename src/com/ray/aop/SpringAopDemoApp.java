@@ -15,8 +15,11 @@ public class SpringAopDemoApp {
 		AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
 		MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 		
+		Account myAccount = new Account();
+		myAccount.setName("myAccountNameIsRay");
+		myAccount.setLevel("myLevelIsMaster");
 
-		theAccountDAO.addAccount(new Account(), true);
+		theAccountDAO.addAccount(myAccount, true);
 		
 		theAccountDAO.doAnything();
 		
