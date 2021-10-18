@@ -18,7 +18,7 @@ public class SpringAopDemoApp {
 
 		theAccountDAO.addAccount();
 		
-		theMembershipDAO.addAccount();
+		theMembershipDAO.addMembership();
 		
 		
 		context.close();
