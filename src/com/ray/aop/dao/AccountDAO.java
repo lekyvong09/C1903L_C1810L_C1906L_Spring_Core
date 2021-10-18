@@ -1,5 +1,8 @@
 package com.ray.aop.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.ray.aop.Account;
@@ -9,6 +12,19 @@ public class AccountDAO {
 	
 	private String name;
 	private String serviceCode;
+	
+	
+	public List<Account> findAccounts() {
+		List<Account> myAccounts = new ArrayList();
+		
+		Account account1 = new Account("Ray", "Gold");
+		Account account2 = new Account("Tommy", "Diamond");
+		
+		myAccounts.add(account1);
+		myAccounts.add(account2);
+		
+		return myAccounts;
+	}
 	
 	public void addAccount(Account theAccount, boolean isVIP) {
 		// doing some logic tasks...............

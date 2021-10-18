@@ -1,6 +1,9 @@
 package com.ray.aop.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -30,4 +33,15 @@ public class DemoLoggingAspect {
 			}
 		}
 	}	
+	
+	
+	@AfterReturning(pointcut="execution(* com.ray.aop.dao.AccountDAO.findAccounts(..))", 
+			returning="outputResult")
+	public void afterReturningFindAccoundAdvice(JoinPoint theJoinPoint, 
+			List<Account> outputResult) {
+		
+		System.out.println("\n===> Executing @AfterReturning on method: " + theJoinPoint.getSignature());
+		
+		System.out.println(outputResult);
+	}
 }
