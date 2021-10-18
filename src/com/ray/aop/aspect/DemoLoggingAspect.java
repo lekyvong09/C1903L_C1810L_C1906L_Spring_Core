@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class DemoLoggingAspect {
 
 	// AOP Pointcut expression language
-	@Before("execution(public void add*())")
+	@Before("execution(void add*())")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n===> Executing @Before advice on addAccount()");
 	}
