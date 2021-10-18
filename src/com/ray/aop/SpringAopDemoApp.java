@@ -23,6 +23,11 @@ public class SpringAopDemoApp {
 		theMembershipDAO.addMembership();
 		
 		
+		theAccountDAO.setName("myName");
+		theAccountDAO.setServiceCode("myService");
+		theAccountDAO.getName();
+		theAccountDAO.getServiceCode();
+		
 		context.close();
 	}
 

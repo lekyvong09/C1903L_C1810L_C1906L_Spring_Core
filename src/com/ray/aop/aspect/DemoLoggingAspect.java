@@ -13,14 +13,24 @@ public class DemoLoggingAspect {
 	@Pointcut("execution(* com.ray.aop.dao.*.*(..))")
 	private void forDaoPackage() { }
 	
+	@Pointcut("execution(* com.ray.aop.dao.*.get*(..))")
+	private void getter() {}
 	
-	@Before("forDaoPackage()")
+	@Pointcut("execution(* com.ray.aop.dao.*.set*(..))")
+	private void setter() {}
+	
+	
+	@Pointcut("forDaoPackage() && !(getter() || setter())")
+	private void forDaoPackageWithoutGetterSetter() { }
+	
+	
+	@Before("forDaoPackageWithoutGetterSetter()")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n===> Executing @Before advice on addAccount()");
 	}
 	
 	
-	@Before("forDaoPackage()")
+	@Before("forDaoPackageWithoutGetterSetter()")
 	public void performApiAnalytics() {
 		System.out.println("\n===> Performing API Analytics");
 	}
