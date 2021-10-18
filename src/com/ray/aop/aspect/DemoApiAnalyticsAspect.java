@@ -6,10 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class DemoLoggingAspect {
-
+public class DemoApiAnalyticsAspect {
 	@Before("com.ray.aop.aspect.AopExpressionLanguage.forDaoPackageWithoutGetterSetter()")
-	public void beforeAddAccountAdvice() {
-		System.out.println("\n===> Executing @Before advice on addAccount()");
-	}	
+	public void performApiAnalytics() {
+		System.out.println("\n===> Performing API Analytics");
+	}
 }
