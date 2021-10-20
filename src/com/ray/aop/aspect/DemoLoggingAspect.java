@@ -3,9 +3,11 @@ package com.ray.aop.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -61,4 +63,28 @@ public class DemoLoggingAspect {
 		String method = theJoinPoint.getSignature().toShortString();
 		System.out.println("\n===> Executing @After (finally) on method: " + method);
 	}
+	
+	
+	// @Around = @Before + @After 
+	@Around("execution(* com.ray.aop.service.TrafficFortuneService.getFortune(..))")
+	public Object aroundGetFortuneService(ProceedingJoinPoint theProceedingJoinPoint) throws Throwable {
+		System.out.println("\n===> Executing @Around on method: " + theProceedingJoinPoint.getSignature().toShortString());
+		
+		// get begin time stamp
+		long begin = System.currentTimeMillis();
+		
+		// now execute the method
+		Object result = theProceedingJoinPoint.proceed();
+		
+		// get end time stamp
+		long end = System.currentTimeMillis();
+		
+		// calculate duration
+		long duration = end - begin;
+		
+		System.out.println("\n===> Dureation: " + duration / 1000.0 + " seconds");
+		
+		return result;
+	}
+	
 }
