@@ -74,7 +74,15 @@ public class DemoLoggingAspect {
 		long begin = System.currentTimeMillis();
 		
 		// now execute the method
-		Object result = theProceedingJoinPoint.proceed();
+		Object result = null;
+		
+		try {
+			result = theProceedingJoinPoint.proceed();
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			result = "Major incident!!! But it is already handled by the AOP";
+		}
+		 
 		
 		// get end time stamp
 		long end = System.currentTimeMillis();
