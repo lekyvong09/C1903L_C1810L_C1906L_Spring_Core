@@ -37,7 +37,7 @@ public class SpringAopDemoApp {
 		List<Account> theAccounts = null;
 		
 		try {
-			boolean returnException = true;
+			boolean returnException = false;
 			theAccountDAO.findAccounts(returnException);
 		} catch (Exception ex) {
 			System.out.println("\nMain Program ... caught exception: " + ex);

@@ -3,6 +3,7 @@ package com.ray.aop.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -52,5 +53,12 @@ public class DemoLoggingAspect {
 	public void afterThrowingFindAccountAdvice(JoinPoint theJoinPoint, Throwable theException) {
 		System.out.println("\n===> The exception is: " + theException);
 		
+	}
+	
+	
+	@After("execution(* com.ray.aop.dao.AccountDAO.findAccounts(..))")
+	public void afterFinallyFindAccountAdvice(JoinPoint theJoinPoint) {
+		String method = theJoinPoint.getSignature().toShortString();
+		System.out.println("\n===> Executing @After (finally) on method: " + method);
 	}
 }
