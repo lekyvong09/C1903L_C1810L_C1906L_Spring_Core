@@ -14,7 +14,12 @@ public class AccountDAO {
 	private String serviceCode;
 	
 	
-	public List<Account> findAccounts() {
+	public List<Account> findAccounts(boolean returnException) {
+		
+		if (returnException) {
+			throw new RuntimeException("Throw Runtime Exception!!");
+		}
+		
 		List<Account> myAccounts = new ArrayList();
 		
 		Account account1 = new Account("Ray", "Gold");

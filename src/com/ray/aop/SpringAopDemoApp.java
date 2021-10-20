@@ -32,7 +32,17 @@ public class SpringAopDemoApp {
 //		theAccountDAO.getName();
 //		theAccountDAO.getServiceCode();
 		
-		List<Account> theAccounts = theAccountDAO.findAccounts();
+//		List<Account> theAccounts = theAccountDAO.findAccounts();
+		
+		List<Account> theAccounts = null;
+		
+		try {
+			boolean returnException = true;
+			theAccountDAO.findAccounts(returnException);
+		} catch (Exception ex) {
+			System.out.println("\nMain Program ... caught exception: " + ex);
+		}
+		
 		System.out.println("\nMainPropram: demo afterReturning aspect");
 		System.out.println("---------------------");
 		
